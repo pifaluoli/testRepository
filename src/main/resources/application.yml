@@ -1,0 +1,60 @@
+server:
+  port: 8888
+
+person:
+  birth: {date: {s:1999-01-01}}
+  age: 22
+  interests: [chifan,shuijiao]
+  animal: [dog,cat]
+  score:
+    chinese: 80
+    math: 20
+    foreignlanguage:
+      english: 22
+      american: 55
+  salarys: [10,20,300]
+  allPets:
+    male: [{name: monkey}]
+    female: [{name: cat1},{name: cat2}]
+  user-name: mhj
+  boss: false
+  pet:
+    name: 22
+
+spring:
+  mvc:
+    static-path-pattern: /res/**
+
+  resources:
+    static-locations: classpath:/haha
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/punch
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+    #开启了监控功能
+    filters: stat,wall
+    #type: com.zaxxer.hikari.HikariDataSource
+
+    max-active: 12
+
+
+  jdbc:
+    template:
+      query-timeout: 3
+
+mycar:
+  brand: BYD
+  price: 20000
+
+logging:
+  config: classpath:logback.xml
+
+
+
+
+
+
+

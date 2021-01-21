@@ -1,0 +1,1 @@
+DAO 为sql操作的接口，内容实现通过mybatis在resources/mapper/XXX.xml中实现

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+
+    <!--level 为INFO的日志，时间滚动输出-->
+    <appender name="INFO-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--日志文档的路径及文档名-->
+        <file>e:/softwareCache/afterend01_log/web_info.log</file>
+        <!--日志文档的输出格式-->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss}[%thread] %-5level %logger{50} - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+
+        <!-- 日志记录器的滚动策略，按日期，按大小记录 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 每天日志归档路径以及格式 -->
+            <fileNamePattern>e:/softwoareCache/afterend01_log/web-info.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <!--日志文档保留天数-->
+            <maxHistory>15</maxHistory>
+        </rollingPolicy>
+
+        <!-- 此日志文档记录info级别及以上的日志 -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+    </appender>
+
+    <!--level 为WARN的日志，时间滚动输出-->
+    <appender name="WARN-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--日志文档的路径及文档名-->
+        <file>e:/softwareCache/afterend01_log/web_warn.log</file>
+        <!--日志文档的输出格式-->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss}[%thread] %-5level %logger{50} - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <!-- 日志记录器的滚动策略，按日期，按大小记录 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 每天日志归档路径以及格式 -->
+            <fileNamePattern>e:/softwoareCache/afterend01_log/web-warn.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <!--日志文档保留天数-->
+            <maxHistory>15</maxHistory>
+        </rollingPolicy>
+
+        <!-- 此日志文档只记录warn级别的 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+
+    </appender>
+
+
+    <!--level 为ERROR的日志，时间滚动输出-->
+    <appender name="ERROR-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--日志文档的路径及文档名-->
+        <file>e:/softwareCache/afterend01_log/web_error.log</file>
+        <!--日志文档的输出格式-->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss}[%thread] %-5level %logger{50} - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <!-- 日志记录器的滚动策略，按日期，按大小记录 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 每天日志归档路径以及格式 -->
+            <fileNamePattern>e:/softwareCache/afterend01_log/web-error.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <!--日志文档保留天数-->
+            <maxHistory>15</maxHistory>
+        </rollingPolicy>
+
+        <!-- 此日志文档记录error级别及以上的日志 -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+    </appender>
+
+    <!-- 日志打印到控制台 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n</pattern>
+        </layout>
+    </appender>
+
+
+    <root level="Info">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="INFO-FILE"/>
+        <appender-ref ref="WARN-FILE"/>
+        <appender-ref ref="ERROR-FILE"/>
+        <!--        <appender-ref ref="ASYNC_hawkAppender" />-->
+    </root>
+
+</configuration>
